@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary'
 import ContactData from './ContactData/ContactData'
 import { connect } from 'react-redux'
 
-class Checkout extends Component {
 
+class Checkout extends Component {
 
 
     checkoutCancelHandler = () => {
@@ -19,8 +19,10 @@ class Checkout extends Component {
 
 
     render() {
+        let purchaseRidirect = this.props.purchased ? <Redirect to='/' /> : null
         return (
             <div>
+                {purchaseRidirect}
                 <CheckoutSummary
                     ingredients={this.props.ings}
                     checkoutContinue={this.checkoutContinueHandler}
@@ -37,10 +39,12 @@ class Checkout extends Component {
 const mapStateToProps = state => {
 
     return {
-        ings: state.ingredients,
-
+        ings: state.burgerBuilder.ingredients,
+        purchased: state.order.purchased
     }
 }
+
+
 
 
 
