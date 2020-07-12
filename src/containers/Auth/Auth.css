@@ -1,0 +1,52 @@
+.Auth {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 2px 3px #dbd0d0;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+
+
+@media(min-width:600px){
+    .Auth {
+  
+  width: 500px;
+
+}
+
+}
+
+
+
+
+
+
+.error {
+  color: rgb(42, 19, 170);
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

@@ -58,7 +58,10 @@ const reducer = (state = initialState, action) => {
                 //     [action.ingredientName]: state.ingredients[action.ingredientName] - 1
                 // },
                 ingredients: {
-                    ...state.ingredients
+                    salad: 0,
+                    meat: 0,
+                    cheese: 0,
+                    bacon: 0
                 },
                 price: 4,
 
