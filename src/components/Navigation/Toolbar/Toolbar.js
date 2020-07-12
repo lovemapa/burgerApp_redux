@@ -8,7 +8,7 @@ export default function Toolbar(props) {
         <header className={classes.Toolbar}>
             <div> Menu</div>
             <Logo />
-            <NavigationItems />
+            <NavigationItems isAuthenticated={props.isAuth} />
         </header>
 
     )

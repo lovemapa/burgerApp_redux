@@ -40,7 +40,7 @@ export const checkAuthExpired = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
             dispatch(logout())
-        }, expirationTime)
+        }, expirationTime * 1000)
     }
 
 }
@@ -65,7 +65,6 @@ export const auth = (email, password, isSignUp) => {
 
         axios.post(url, authData)
             .then(response => {
-                console.log(response);
                 dispatch(authSuccess(response.data.idToken, response.data.localId))
                 dispatch(checkAuthExpired(response.data.expiresIn))
             }).catch(error => {

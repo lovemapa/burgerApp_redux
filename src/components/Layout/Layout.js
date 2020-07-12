@@ -7,7 +7,7 @@ export default function Layout(props) {
     return (
         <Aux>
 
-            <Toolbar />
+            {/* <Toolbar /> */}
 
             <main className={classes.Content}>
                 {props.children}
