@@ -101,8 +101,8 @@ export const fetchOrders = (token) => {
             dispatch(fetchOrderSuccess(fetchedOrders))
 
         }).catch(err => {
-
-            dispatch(fetchOrderFail(err.response.data.error))
+            if (err.response)
+                dispatch(fetchOrderFail(err.response.data.error))
 
         })
     }

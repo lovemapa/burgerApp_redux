@@ -5,6 +5,7 @@ import Input from '../../components/UI/Input/Input'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import classes from './Auth.css'
 import * as actions from '../../store/actions/index'
+import { Redirect } from "react-router-dom";
 
 class Auth extends Component {
     state = {
@@ -41,6 +42,10 @@ class Auth extends Component {
                 touched: false
             }
         }, isSignUp: true
+    }
+    componentDidMount() {
+        if (!this.props.building && this.props.authRidirectpath !== '/')
+            this.props.onSetRedirect()
     }
 
     submitFormHandler = (event) => {
@@ -125,18 +130,24 @@ class Auth extends Component {
             </h4>)
         }
 
+        let authRidirect = null
+        if (this.props.isAuthenticated) {
+            authRidirect = <Redirect to={this.props.onSetRedirect} />
+        }
+
         return (
             <div className={classes.Auth}>
+                {authRidirect}
                 {errorMessage}
                 <form onSubmit={this.submitFormHandler} >
                     {form}
                     <Button btnType="Success"> SUBMIT</Button>
-                </form>
+                </form >
                 <Button
                     clicked={this.switchAuthModeHandler}
                     btnType="Danger"> Switch to {this.state.isSignUp ? 'Sign In' : 'Sign up'}
                 </Button>
-            </div>
+            </div >
         )
     }
 }
@@ -146,13 +157,17 @@ const mapStateToProps = state => {
 
     return {
         loading: state.auth.loading,
-        error: state.auth.error
+        error: state.auth.error,
+        isAuthenticated: state.auth.token !== null,
+        building: state.burgerBuilder.building,
+        authRidirectpath: state.auth.authRedirect
     }
 }
 const dispatchMapToProps = dispatch => {
 
     return {
-        onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp))
+        onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp)),
+        onSetRedirect: () => dispatch(actions.setAuthRedirectPath('/'))
     }
 }
 

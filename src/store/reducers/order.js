@@ -64,7 +64,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 orders: action.orders,
-                error: false,
+                error:false,
                 loading: false
             }
 

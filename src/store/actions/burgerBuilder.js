@@ -44,20 +44,20 @@ export const fetchFailed = () => {
 
 export const initIngredients = () => {
     return dispatch => {
-        // axios.get('https://fir-a21e3.firebaseio.com/ingredients.json')
-        //     .then(response => {
-        //         console.log(response.data);
-        //         dispatch(setIngredient(response.data))
-        dispatch(setIngredient({
-            salad: 0,
-            meat: 0,
-            cheese: 0,
-            bacon: 0
-        }))
+        axios.get('https://fir-a21e3.firebaseio.com/ingredients.json')
+            .then(response => {
+                console.log(response.data);
+                // dispatch(setIngredient(response.data))
+                dispatch(setIngredient({
+                    salad: 0,
+                    meat: 0,
+                    cheese: 0,
+                    bacon: 0
+                }))
 
-        // }).catch(e => {
-        //     console.log(e);
-        //     dispatch(fetchFailed())
-        // })
+            }).catch(e => {
+                console.log(e);
+                dispatch(fetchFailed())
+            })
     }
 }

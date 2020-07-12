@@ -5,6 +5,7 @@ import Button from '../../UI/Button/Button'
 
 export default function OrderSummary(props) {
 
+    
     const ingredientsSummry = Object.keys(props.ingredients)
         .map(key => {
             return <li key={key}>

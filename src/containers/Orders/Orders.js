@@ -18,7 +18,9 @@ class Orders extends Component {
     render() {
         let orders = <Spinner />
 
+
         if (!this.props.loading || !this.props.error) {
+
             orders = this.props.orders.map(order => (
                 <Order
                     key={order.id}
@@ -32,6 +34,7 @@ class Orders extends Component {
             errorMessage = (<div className={classes.Error}>
                 {this.props.error}
             </div>)
+            orders = []
         }
 
         return (

@@ -9,6 +9,7 @@ const initialState = {
         bacon: 0
     },
     price: 4,
+    building: false
 }
 
 
@@ -30,8 +31,10 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 ingredients: {
                     ...state.ingredients,
-                    [action.ingredientName]: state.ingredients[action.ingredientName] + 1
+                    [action.ingredientName]: state.ingredients[action.ingredientName] + 1,
+
                 },
+                building: true,
                 price: state.price + PRICES[action.ingredientName]
 
             }
@@ -44,6 +47,7 @@ const reducer = (state = initialState, action) => {
                     ...state.ingredients,
                     [action.ingredientName]: state.ingredients[action.ingredientName] - 1
                 },
+                building: true,
                 price: state.price - PRICES[action.ingredientName]
 
 
@@ -51,18 +55,28 @@ const reducer = (state = initialState, action) => {
         }
 
         case actionTypes.SET_INGREDIENTS: {
+
+
             return {
                 ...state,
                 // ingredients: {
                 //     ...state.ingredients,
                 //     [action.ingredientName]: state.ingredients[action.ingredientName] - 1
                 // },
+                // ingredients: {
+                //     salad: 0,
+                //     meat: 0,
+                //     cheese: 0,
+                //     bacon: 0
+                // },
+
                 ingredients: {
-                    salad: 0,
-                    meat: 0,
-                    cheese: 0,
-                    bacon: 0
+                    salad: action.ingredients.salad,
+                    meat: action.ingredients.meat,
+                    cheese: action.ingredients.cheese,
+                    bacon: action.ingredients.bacon
                 },
+                building: false,
                 price: 4,
 
 
