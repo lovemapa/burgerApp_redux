@@ -164,7 +164,7 @@ class ContactData extends Component {
 
         let form = (<form onSubmit={this.submitFormhandler}>
 
-
+            <h4>Enter your data</h4>
             {
                 formArray.map(element => {
 
@@ -191,7 +191,7 @@ class ContactData extends Component {
         }
         return (
             <div className={classes.ContactData}>
-                <h4>Enter your data</h4>
+
                 {form}
             </div>
         )
